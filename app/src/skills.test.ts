@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import fs from 'fs'
 import path from 'path'
 
-const skillsDir = path.resolve(__dirname, '../../.claude/skills')
+const skillsDir = path.resolve(__dirname, '../../.agents/skills')
 
 describe('skills', () => {
   it('skills directory exists and contains skill subdirectories', () => {

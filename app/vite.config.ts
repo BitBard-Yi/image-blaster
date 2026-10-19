@@ -651,10 +651,10 @@ function worldsPlugin(): Plugin {
     return value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')
   }
 
-  function openClaudeTerminal() {
+  function openCodexTerminal() {
     if (process.platform !== 'darwin') return false
 
-    const command = `cd ${shellQuote(repoRoot)} && claude`
+    const command = `cd ${shellQuote(repoRoot)} && codex`
     const child = spawn('osascript', [
       '-e',
       'tell application "Terminal"',
@@ -711,10 +711,10 @@ function worldsPlugin(): Plugin {
         res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify(readWorlds()))
       })
-      server.middlewares.use('/__open-claude-terminal', (_req, res) => {
-        if (!openClaudeTerminal()) {
+      server.middlewares.use('/__open-codex-terminal', (_req, res) => {
+        if (!openCodexTerminal()) {
           res.statusCode = 501
-          res.end('Opening Claude terminal is only supported on macOS.')
+          res.end('Opening Codex terminal is only supported on macOS.')
           return
         }
 
